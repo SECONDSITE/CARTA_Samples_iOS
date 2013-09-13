@@ -32,6 +32,15 @@
 {
     [super viewDidLoad];
     
+    if([API_KEY isEqualToString:@"YOUR_API_KEY_HERE"])
+    {
+        NSException* myException = [NSException
+                                    exceptionWithName:@"MissingAPIKeyException"
+                                    reason:@"Please enter your API key in the CARTA_Samples-Prefix.pch file."
+                                    userInfo:nil];
+        @throw myException;
+    }
+    
     if(!mapView) mapView = [[MKMapView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     
     //These three aren't strictly necessary, but...
